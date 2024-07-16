@@ -6,6 +6,32 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface MusicBall {
+        /**
+          * 单曲循环
+         */
+        "loop": boolean;
+        /**
+          * music artist
+         */
+        "musicArtist": string;
+        /**
+          * music cover
+         */
+        "musicCover": string;
+        /**
+          * music title
+         */
+        "musicTitle": string;
+        /**
+          * music url
+         */
+        "musicUrl": string;
+        /**
+          * size of the ball
+         */
+        "size": number;
+    }
     interface MyComponent {
         /**
           * The first name
@@ -22,6 +48,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLMusicBallElement extends Components.MusicBall, HTMLStencilElement {
+    }
+    var HTMLMusicBallElement: {
+        prototype: HTMLMusicBallElement;
+        new (): HTMLMusicBallElement;
+    };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
     var HTMLMyComponentElement: {
@@ -29,10 +61,37 @@ declare global {
         new (): HTMLMyComponentElement;
     };
     interface HTMLElementTagNameMap {
+        "music-ball": HTMLMusicBallElement;
         "my-component": HTMLMyComponentElement;
     }
 }
 declare namespace LocalJSX {
+    interface MusicBall {
+        /**
+          * 单曲循环
+         */
+        "loop"?: boolean;
+        /**
+          * music artist
+         */
+        "musicArtist"?: string;
+        /**
+          * music cover
+         */
+        "musicCover"?: string;
+        /**
+          * music title
+         */
+        "musicTitle"?: string;
+        /**
+          * music url
+         */
+        "musicUrl"?: string;
+        /**
+          * size of the ball
+         */
+        "size"?: number;
+    }
     interface MyComponent {
         /**
           * The first name
@@ -48,6 +107,7 @@ declare namespace LocalJSX {
         "middle"?: string;
     }
     interface IntrinsicElements {
+        "music-ball": MusicBall;
         "my-component": MyComponent;
     }
 }
@@ -55,6 +115,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "music-ball": LocalJSX.MusicBall & JSXBase.HTMLAttributes<HTMLMusicBallElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
         }
     }
