@@ -8,6 +8,14 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface MusicBall {
         /**
+          * 自动播放
+         */
+        "autoPlay": boolean;
+        /**
+          * 动画速度
+         */
+        "duration": number;
+        /**
           * 单曲循环
          */
         "loop": boolean;
@@ -31,6 +39,10 @@ export namespace Components {
           * size of the ball
          */
         "size": number;
+        /**
+          * 主题颜色
+         */
+        "themeColor": string;
     }
     interface MyComponent {
         /**
@@ -68,6 +80,14 @@ declare global {
 declare namespace LocalJSX {
     interface MusicBall {
         /**
+          * 自动播放
+         */
+        "autoPlay"?: boolean;
+        /**
+          * 动画速度
+         */
+        "duration"?: number;
+        /**
           * 单曲循环
          */
         "loop"?: boolean;
@@ -91,6 +111,10 @@ declare namespace LocalJSX {
           * size of the ball
          */
         "size"?: number;
+        /**
+          * 主题颜色
+         */
+        "themeColor"?: string;
     }
     interface MyComponent {
         /**

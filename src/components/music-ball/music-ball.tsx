@@ -9,7 +9,7 @@ export class MusicBall {
   /**
    * size of the ball
    */
-  @Prop() size: number = 60;
+  @Prop() size: number = 180;
   /**
    * music url
    */
@@ -30,6 +30,18 @@ export class MusicBall {
    * 单曲循环
    */
   @Prop() loop: boolean = true;
+  /**
+   * 自动播放
+   */
+  @Prop() autoPlay: boolean = true;
+  /**
+   * 主题颜色
+   */
+  @Prop() themeColor: string = '133, 238, 252';
+  /**
+   * 动画速度
+   */
+  @Prop() duration: number = 1;
 
   @State()
   playing: boolean = false;
@@ -65,6 +77,8 @@ export class MusicBall {
         class="ball-outer"
         style={{
           ['--ball-size']: `${this.size}px`,
+          ['--theme-color']: this.themeColor,
+          ['--transition-duration']: `${this.duration}s`,
         }}
       >
         <audio
@@ -73,11 +87,10 @@ export class MusicBall {
           ref={el => {
             this.initAudio(el);
           }}
+          autoPlay={this.autoPlay}
           loop={this.loop}
         ></audio>
-        <div class={
-          this.playing ? 'ball playing' : 'ball'
-        }>
+        <div class={this.playing ? 'ball playing' : 'ball'}>
           <div
             class="left"
             onClick={ev => {
@@ -85,14 +98,14 @@ export class MusicBall {
             }}
           >
             <div class="cover">
-              <img
-              draggable={false}
-               src={this.musicUrl ? this.musicCover : 'this.musicCover'} />
+              <img draggable={false} src={this.musicUrl ? this.musicCover : 'this.musicCover'} />
             </div>
           </div>
           <div class="right">
-            <div class="title">{this.musicTitle}</div>
-            <div class="author">{this.musicArtist}</div>
+            <div class="right-inner">
+              <div class="title">{this.musicTitle}</div>
+              <div class="artist">{this.musicArtist}</div>
+            </div>
           </div>
         </div>
       </div>
