@@ -9,7 +9,7 @@ export class MusicBall {
   /**
    * size of the ball
    */
-  @Prop() size: number = 80;
+  @Prop() size: number = 60;
   /**
    * music url
    */
@@ -85,7 +85,9 @@ export class MusicBall {
             }}
           >
             <div class="cover">
-              <img src={this.musicUrl ? this.musicCover : 'this.musicCover'} />
+              <img
+              draggable={false}
+               src={this.musicUrl ? this.musicCover : 'this.musicCover'} />
             </div>
           </div>
           <div class="right">
