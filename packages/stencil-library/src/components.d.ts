@@ -44,20 +44,6 @@ export namespace Components {
          */
         "themeColor": string;
     }
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
-    }
 }
 declare global {
     interface HTMLMusicBallElement extends Components.MusicBall, HTMLStencilElement {
@@ -66,15 +52,8 @@ declare global {
         prototype: HTMLMusicBallElement;
         new (): HTMLMusicBallElement;
     };
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
-    }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
-    };
     interface HTMLElementTagNameMap {
         "music-ball": HTMLMusicBallElement;
-        "my-component": HTMLMyComponentElement;
     }
 }
 declare namespace LocalJSX {
@@ -116,23 +95,8 @@ declare namespace LocalJSX {
          */
         "themeColor"?: string;
     }
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
-    }
     interface IntrinsicElements {
         "music-ball": MusicBall;
-        "my-component": MyComponent;
     }
 }
 export { LocalJSX as JSX };
@@ -140,7 +104,6 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "music-ball": LocalJSX.MusicBall & JSXBase.HTMLAttributes<HTMLMusicBallElement>;
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
         }
     }
 }
